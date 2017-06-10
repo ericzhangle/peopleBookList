@@ -1,15 +1,21 @@
 extends layout
 block name
 	h1 People List
-	table
+	table#peopleTable
 		each pe in people
 			tr
 				td
-					p #{pe.name}
-				td 
-					p #{pe.age}
+					input(type="hidden", value=pe._id,class="itemID")
 				td
-					p #{pe.books[0].name}
+					input(type="text",value= pe.name,class="nameP") 
+				td 
+					input(type="text",value= pe.age,class="ageP") 
+				td
+					input(type="text",value= pe.books[0].name,class="bookP") 
+				td
+					a(id="link",href="/") update
+				td
+					a(href="/delete/:id") delete
 	form( action="/create",method="post")
 		label(for="name") people name
 		input(type="text",id="name",name="name")
@@ -24,4 +30,5 @@ block name
 		input(type="text",id="pages",name="pages")
 		br
 		input(type="submit" value="create")
+	script(src="/javascripts/peopleBook.js")
 
