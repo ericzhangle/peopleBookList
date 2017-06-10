@@ -1,0 +1,40 @@
+mixin product(name,price)
+  li.product
+    h2.product__name #{name}
+    p.product_price $#{price}
+
+extends layout
+
+block name
+  h1= title
+  p.class Welcome to #{title}
+    a(href="http://www.baidu.com") this is a link tag
+  div
+    ul
+      li First element
+      li second selement
+      li third element
+    label(for="ourid") this is our tag
+    input(calss="123" name="ourname" type="password" id="ourid" placeholder="some fuck")
+    table
+      tr
+        td
+          label name
+        td
+          input(name="id" id="name")
+    form(method="post", action="/")
+      input(type="submit", value="our value")
+  script(src="/javascripts/hello.js")
+block content
+  ul.fruit
+    each item, i in fruit
+      li #{i} : #{item}
+  ul.products
+    +product("bottle",9)
+    +product("6-bpac",10)
+  .whatisThat
+    p thank you
+  block myblock
+  p i want to do something
+  
+ // p= title
