@@ -6,6 +6,14 @@ mixin product(name,price)
 extends layout
 
 block name
+  if(!user)
+    a(href="/login") Login
+  br
+  a(href="/register") Register
+  if(user)
+    p You are currently logged in as #{user.username}
+    a(href="./logout") Logout
+
   h1= title
   p.class Welcome to #{title}
     a(href="http://www.baidu.com") this is a link tag
