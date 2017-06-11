@@ -27,6 +27,7 @@ block name
   script(src="/javascripts/hello.js")
 block content
   ul.fruit
+  - var fruit = ["apple","banana","fuck"]
     each item, i in fruit
       li #{i} : #{item}
   ul.products

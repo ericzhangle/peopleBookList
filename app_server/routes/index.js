@@ -9,4 +9,5 @@ router.get('/minion', controller.minion);
 //router.get('/task', controller.taskinfo);
 router.get('/delete/:id', controller.delete);
 router.get('/change', controller.change);
+router.get("/jade",controller.index);
 module.exports = router;

@@ -1,10 +1,20 @@
-- var fruit = ["apple","banana","fuck"]
+
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block name
-    block content
-    p something you do
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		block name
+		block content
+		p something you do
+		script.
+			var products= document.getElementsByClassName("product");
+			console.log(products);
+			for(var i=0;i<products.length;i++)
+				{
+					products[i].querySelector(".product__name").innerHTML="zhangle";
+				}
+			console.log(document.cookie);
+			document.cookie="zhangle:56";
+			console.log(document.cookie);

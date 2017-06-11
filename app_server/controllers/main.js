@@ -43,6 +43,10 @@ module.exports.delete=function(req, res, next) {
 };
 //	var queryString= "/change/?id="+id.value+ "&nameP="+nameP.value+"&ageP="+ageP.value+"&bookP="+bookP.value;
 
+module.exports.index=function(req, res, next) {
+   res.render('index',{title:"fuck"});
+};
+
 module.exports.change=function(req, res, next) {
 	var id= req.query.id;
 	var nameP=req.query.nameP;
