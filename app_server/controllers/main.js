@@ -2,12 +2,16 @@ var mongoose= require("mongoose");
 var people= mongoose.model("people");
 
 var showList=function(req, res, next) {
-
+  console.log(req.session);
   people.find({},function(err,docs){
   	if (err)
   		return console.log(err);
   	if (docs)
-  		res.render("peoples",{people:docs})
+    {
+      //console.log(req.session.passport);
+      res.render("peoples",{people:docs,user:req.session.passport})
+    }
+  		
   		//res.render('index', { title: 'what the shit' });
   })
   

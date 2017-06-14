@@ -7,12 +7,6 @@ var bodyParser = require('body-parser');
 var passport= require("passport");
 var localStrategy= require("passport-local").Strategy;
 
-//var mongoclient= require("mongodb").MongoClient;
-
-
-
-
-//var users = require('./app_server/routes/users');
 
 var app = express();
 
@@ -26,10 +20,9 @@ mongoose.connection.on("error",function(){console.log("error ")});
 mongoose.connection.on("disconnected",function(){console.log("disconnected ")});
 var people= require("./schemas");
 
-//mongoose.model("people",peopleSchema);
 
 
-// view engine setup
+
 app.set('views', path.join(__dirname, '/app_server/views'));
 app.set('view engine', 'jade');
 
@@ -49,10 +42,12 @@ app.use(require("express-session")({
 //for passport
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 var Account= require("./account");
 passport.use(new localStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
-passport.deserializeUser(Account.deserializeUser);
+passport.deserializeUser(Account.deserializeUser());
 
 var router = require('./app_server/routes/index');
 app.use(router);

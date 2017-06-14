@@ -20,16 +20,25 @@ router.post("/login",passport.authenticate("local"),function(req,res){
 });
 router.get("/register",function(req,res){
 	res.render("register");
+});
+router.get("/logout",function(req,res){
+	req.session.destroy(function(err){
+		console.log(err);
+	});
+	res.redirect("/");
+
 })
 router.post("/register",function(req,res){
 	Account.register(new Account({username:req.body.username}),
 		req.body.password,function(err,account){
 			if(err)
-			   return res.render("register",{message:err.message})
+			   return console.log(err);
+			//res.render("register",{message:err.message})
 
-			passport.authenticate("local")(req,res,function(){
-				res.redirect("/");
-			});
+			// passport.authenticate("local")(req,res,function(){
+			// 	res.redirect("/");
+			// });
+			res.redirect("/");
 		})
 })
 module.exports = router;
